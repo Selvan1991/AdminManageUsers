@@ -1,0 +1,169 @@
+.divheader {
+  float: left;
+  margin-left: 26px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.s-input-icon {
+  --_ii-fc: unset;
+  --_ii-r: .7em;
+  color: var(--_ii-fc);
+  right: var(--_ii-r);
+  margin-top: -9px;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+}
+
+.filterbtn {
+  float: left;
+  width: 12.3%;
+  padding: 10px;
+  height: 50px;
+  margin-left: 634px;
+}
+
+.exportbtn {
+  float: left;
+  width: 12.3%;
+  padding: 10px;
+  height: 50px;
+  margin-left: -50px;
+}
+
+.searchbox {
+  float: left;
+  margin-left: 901px;
+  width: 29.4%;
+  padding: 10px;
+  height: 50px;
+  margin-top: -50px;
+}
+
+.adduserbtn {
+  float: left;
+  margin-left: 4px;
+  width: 10%;
+  padding: 10px;
+  height: 50px;
+  margin-top: -50px;
+}
+
+.search-form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  background-clip: padding-box;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: var(--bs-border-radius);
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.headerdivbefore {
+  padding-top: 30px;
+  margin-left: 9px;
+  width: 99%;
+  margin-bottom: 32px;
+}
+
+.headerdivafter {
+  padding-top: 30px;
+  margin-left: 9px;
+  width: 99%;
+  margin-bottom: 0px;
+}
+
+.userddl {
+  width: 14%;
+  background-color: white;
+  margin-top: 13px;
+  float: left;
+  margin-left: 44px;
+}
+
+.currentprojectsddl {
+  width: 21%;
+  float: left;
+  margin-left: 9px;
+  margin-top: 13px;
+  background-color: white;
+}
+
+.createdbyddl {
+  width: 14%;
+  float: left;
+  margin-left: 10px;
+  margin-top: 13px;
+  background-color: white;
+}
+
+.createdonddl {
+  width: 14%;
+  float: left;
+  margin-left: 10px;
+  margin-top: 13px;
+  background-color: white;
+}
+
+.lastloginddl {
+  width: 14%;
+  float: left;
+  margin-left: 10px;
+  margin-top: 13px;
+  background-color: white;
+}
+
+.applybtndiv {
+  width: 5%;
+  float: left;
+  margin-left: 10px;
+  margin-top: 13px;
+}
+
+.applybtn {
+  font-size: 15px;
+  background-color: white;
+  border: 1px solid grey;
+  width: 90px;
+  color: grey;
+  height: 38px;
+  padding-top: 4px;
+}
+
+.clearbtndiv {
+  width: 5%;
+  float: left;
+  margin-left: 24px;
+  margin-top: 13px;
+}
+
+.clearbtn {
+  font-size: 15px;
+  background-color: white;
+  border: 1px solid grey;
+  width: 90px;
+  color: black;
+  height: 38px;
+  padding-top: 4px;
+}
+
+.closebtndiv {
+  width: 3%;
+  float: left;
+  margin-left: 20px;
+  margin-top: 19px;
+}

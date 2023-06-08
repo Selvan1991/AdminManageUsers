@@ -1,0 +1,110 @@
+[
+    {
+        "userid" : "1",
+        "username": "user1",
+        "currentprojects": "P3,P4,ETCProject,again123s4",
+        "createdby": "admin",
+        "createdon": "Mar 08,2019",
+        "lastlogin": "May 19,2023",
+        "admin": "",
+        "addtoproject": "",
+        "edit": "",
+        "delete": ""
+    },
+    {
+        "userid" : "2",
+        "username": "user2",
+        "currentprojects": "p-final-2,Prj-Currency,Project",
+        "createdby": "user",
+        "createdon": "Apr 26,2023",
+        "lastlogin": "May 25,2023",
+        "admin": "",
+        "addtoproject": "",
+        "edit": "",
+        "delete": ""
+    },
+    {
+        "userid" : "3",
+        "username": "user3",
+        "currentprojects": "p-final-3,Prj-Currency,Project",
+        "createdby": "user1",
+        "createdon": "Jan 26,2023",
+        "lastlogin": "May 10,2023",
+        "admin": "",
+        "addtoproject": "",
+        "edit": "",
+        "delete": ""
+    },
+    {
+        "userid" : "4",
+        "username": "user4",
+        "currentprojects": "p-final-4,Prj-Currency,Project",
+        "createdby": "user2",
+        "createdon": "Feb 26,2023",
+        "lastlogin": "May 11,2023",
+        "admin": "",
+        "addtoproject": "",
+        "edit": "",
+        "delete": ""
+    },
+    {
+        "userid" : "5",
+        "username": "user5",
+        "currentprojects": "p-final-5,Prj-Currency,Project",
+        "createdby": "user3",
+        "createdon": "Dec 26,2022",
+        "lastlogin": "May 12,2023",
+        "admin": "",
+        "addtoproject": "",
+        "edit": "",
+        "delete": ""
+    },
+    {
+        "userid" : "6",
+        "username": "user6",
+        "currentprojects": "p-final-6,Prj-Currency,Project",
+        "createdby": "user4",
+        "createdon": "Nov 03,2022",
+        "lastlogin": "May 13,2023",
+        "admin": "",
+        "addtoproject": "",
+        "edit": "",
+        "delete": ""
+    },
+    {
+        "userid" : "7",
+        "username": "user7",
+        "currentprojects": "p-final-7,Prj-Currency,Project",
+        "createdby": "user5",
+        "createdon": "Oct 09,2022",
+        "lastlogin": "May 15,2023",
+        "admin": "",
+        "addtoproject": "",
+        "edit": "",
+        "delete": ""
+    },
+    {
+        "userid" : "8",
+        "username": "user8",
+        "currentprojects": "p-final-8,Prj-Currency,Project",
+        "createdby": "user6",
+        "createdon": "Sep 01,2022",
+        "lastlogin": "May 02,2023",
+        "admin": "",
+        "addtoproject": "",
+        "edit": "",
+        "delete": ""
+    },
+    {
+        "userid" : "9",
+        "username": "User9",
+        "currentprojects": "p-final-9,Prj-Currency,Project",
+        "createdby": "User7",
+        "createdon": "aug 01,2022",
+        "lastlogin": "May 05,2023",
+        "admin": "",
+        "addtoproject": "",
+        "edit": "",
+        "delete": ""
+    }
+]

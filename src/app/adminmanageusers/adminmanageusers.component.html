@@ -1,0 +1,155 @@
+<div style="background-color: lightgray;">
+
+
+    <div class="divheader">
+        <h5>Admin - Manage Users</h5>
+    </div>
+    <div class="row" [ngClass]="(isshowAdminMultiDDL === true ? 'headerdivafter' : 'headerdivbefore')">
+        <div class="filterbtn">
+            <button class="form-control" (click)="isShowMultiSelectDDLList()" style="font-size:15px; background-color: lightgrey;
+        border: 1px solid grey;width: 119px;color:black;height: 38px;"><i style="margin-right: 7px;" class="bi bi-funnel"></i>Filter</button>
+        </div>
+        <div class="exportbtn">
+            <button class="form-control" style="font-size:15px;background-color: lightgrey;
+        border: 1px solid grey;width: 119px;color: black;height: 38px;" type="button"><i style="margin-right: 7px;" class="bi bi-table"></i>Export</button>
+        </div>
+        <div class="searchbox">
+            <div class="input-group">
+
+                <input class="search-form-control" style="background-color:white;height: 38px;font-size:15px;" type="text"
+                    placeholder="Search Users" id="box" (keyup)="Filterchange($event)">
+
+                <svg aria-hidden="true" class="s-input-icon s-input-icon__search svg-icon iconSearch" width="18"
+                    height="18" viewBox="0 0 18 18">
+                    <path
+                        d="m18 16.5-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5ZM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0Z">
+                    </path>
+                </svg>
+            </div>
+        </div>
+        <div class="adduserbtn">
+            <button style="font-size:15px; color: #fff;
+        background-color: #337ab7;height: 38px;" type="button" class="btn btn-primary"><i style="margin-right: 7px;" class="bi bi-plus-circle"></i>Add User
+            </button>
+        </div>
+    </div>
+    <div class="row" *ngIf="isshowAdminMultiDDL" style="margin-bottom: 32px;margin-left: 0px;">
+
+        <form [formGroup]="adminuserform">
+            <div class="userddl">
+                <ng-multiselect-dropdown [settings]="settings" [data]="userdropdownData" 
+                    [placeholder]="'User'" [formControl]="adminuserform.controls['userItems']"
+                    (onSelect)="onDataSelect($event)" (onSelectAll)="onSelectAll($event)"
+                    (onDeSelect)="onDataUnSelect($event)" (onDeSelectAll)="onUnSelectAll()">
+                </ng-multiselect-dropdown>
+            </div>
+            <div class="currentprojectsddl">
+                <ng-multiselect-dropdown [settings]="currentprojectssettings"
+                    [placeholder]="'Current Projects'"  [data]="userdropdownData"
+                    [formControl]="adminuserform.controls['currentprojectsItems']" (onSelect)="onDataSelectCurrentprojects($event)"
+                    (onSelectAll)="onSelectAllCurrentprojects($event)"
+                    (onDeSelect)="onDataUnSelectCurrentprojectst($event)"
+                    (onDeSelectAll)="onUnSelectAllCurrentprojects()">
+                </ng-multiselect-dropdown>
+            </div>
+            <div class="createdbyddl">
+                <ng-multiselect-dropdown [settings]="createdbysettings" [data]="userdropdownData"
+                    [placeholder]="'Created By'" [formControl]="adminuserform.controls['createdby']" (onSelect)="onDataSelectCreatedBy($event)"
+                    (onSelectAll)="onSelectAllCreatedBy($event)" (onDeSelect)="onDataUnSelectCreatedBy($event)"
+                    (onDeSelectAll)="onUnSelectAllCreatedBy()">
+                </ng-multiselect-dropdown>
+            </div>
+            <div class="createdonddl">
+                <ng-multiselect-dropdown [settings]="createdonsettings" [data]="userdropdownData"
+                    [placeholder]="'Created On'" [formControl]="adminuserform.controls['createdon']" (onSelect)="onDataSelectCreatedOn($event)"
+                    (onSelectAll)="onSelectAllCreatedOn($event)" (onDeSelect)="onDataUnSelectCreatedOn($event)"
+                    (onDeSelectAll)="onUnSelectAllCreatedOn()">
+                </ng-multiselect-dropdown>
+            </div>
+            <div class="lastloginddl">
+                <ng-multiselect-dropdown [settings]="lastloginsettings" [data]="userdropdownData"
+                    [placeholder]="'Last Login'" [formControl]="adminuserform.controls['lastlogin']" (onSelect)="onDataSelectLastLogin($event)"
+                    (onSelectAll)="onSelectAllLastLogin($event)" (onDeSelect)="onDataUnSelectLastLogin($event)"
+                    (onDeSelectAll)="onUnSelectAllLastLogin()">
+                </ng-multiselect-dropdown>
+            </div>
+            <div class="applybtndiv">
+                <button type="button" style="font-size:15px;background-color: white;
+border: 1px solid grey;width: 90px; color: grey;height: 38px;padding-top: 4px;" (click)="getSelectedList()" class="btn btn-info">Apply</button>
+            </div>
+            <div class="clearbtndiv">
+                <button type="button" style="font-size:15px;background-color: white;
+            border: 1px solid grey;width: 90px; color: black;height: 38px;padding-top: 4px;" (click)="clearDLLList()" class="btn btn-info">Clear</button>
+            </div>
+            <div class="closebtndiv">
+                <button type="button" class="btn-close" aria-label="Close" (click)="isHideMultiSelectDDLList()"></button>
+            </div>
+        </form>
+    </div>
+
+    <mat-card>
+        <mat-card-content>
+            <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="checkbox">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+                        </mat-checkbox>
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+                        </mat-checkbox>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="username">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> User</th>
+                    <td mat-cell *matCellDef="let element">{{element.username}}</td>
+                </ng-container>
+                <ng-container matColumnDef="currentprojects">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Current Projects</th>
+                    <td mat-cell *matCellDef="let element">{{element.currentprojects}}</td>
+                </ng-container>
+                <ng-container matColumnDef="createdby">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Created By</th>
+                    <td mat-cell *matCellDef="let element">{{element.createdby}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="createdon">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Created On</th>
+                    <td mat-cell *matCellDef="let element">{{element.createdon}}</td>
+                </ng-container>
+                <ng-container matColumnDef="lastlogin">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Last Login</th>
+                    <td mat-cell *matCellDef="let element">{{element.lastlogin}}</td>
+                </ng-container>
+                <ng-container matColumnDef="admin">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Admin</th>
+                    <td mat-cell *matCellDef="let element"><i class="bi bi-person-gear"></i></td>
+                </ng-container>
+                <ng-container matColumnDef="addtoproject">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Add to Project</th>
+                    <td mat-cell *matCellDef="let element"><i class="bi bi-plus-circle"></i></td>
+                </ng-container>
+                <ng-container matColumnDef="edit">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Edit</th>
+                    <td mat-cell *matCellDef="let element"><i class="bi bi-file-earmark-text"></i></td>
+                </ng-container>
+                <ng-container matColumnDef="delete">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Delete</th>
+                    <td mat-cell *matCellDef="let element"><i class="bi bi-trash"></i></td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+            </table>
+        </mat-card-content>
+        <br>
+        <mat-card-footer>
+
+            <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+
+        </mat-card-footer>
+    </mat-card>
+</div>
