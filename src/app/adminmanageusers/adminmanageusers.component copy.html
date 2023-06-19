@@ -77,13 +77,13 @@
             </div>
             <div class="applybtndiv">
                 <button type="button" style="font-size:15px;background-color: white;
-                border: 1px solid grey;width: 90px; color: black;height: 44px;padding-top: 4px;"
-                    (click)="getSelectedList()" class="btn btn-info">Apply</button>
+                border: 1px solid grey;width: 90px; color: black;height: 44px;padding-top: 4px;" 
+                (click)="getSelectedList()" class="btn btn-info">Apply</button>
             </div>
             <div class="clearbtndiv">
                 <button type="button" style="font-size:15px;background-color: white;
-                border: 1px solid grey;width: 90px; color: black;height: 44px;padding-top: 4px;"
-                    (click)="clearDDLList()" class="btn btn-info">Clear</button>
+                border: 1px solid grey;width: 90px; color: black;height: 44px;padding-top: 4px;" 
+                (click)="clearDDLList()" class="btn btn-info">Clear</button>
             </div>
             <div class="closebtndiv">
                 <button type="button" class="btn-close" aria-label="Close"
@@ -150,41 +150,62 @@
                 <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
             </table>
             <p *ngIf="dataSourceLength0" class="norecordsfound">No Records Found!</p>
-
         </mat-card-content>
         <br>
-
         <mat-card-footer>
-            <!--<div class="page-select">
-                 <mat-form-field appearance="outline">
-                    <mat-select [ngModel]="manualPage" (ngModelChange)="updateManualPage($event)">
-                      <mat-option [value]="0">1 of 2</mat-option>
-                      <mat-option [value]="1">2 of 2</mat-option>
-                      
-                    </mat-select>
-                  </mat-form-field> x
-                  <mat-paginator #paginator  [pageSizeOptions]="[10,20]" pageSize=10  [hidePageSize]="true" ></mat-paginator>
-            </div>-->
-            <div class="page-select" style="float: right;margin-right: 10px;">
-                <!-- <app-matselect pageSize=10></app-matselect> -->
-                <div class="wrapper">
-                    <mat-paginator #paginator [pageSizeOptions]="[10]" pageSize=10
-                        [hidePageSize]="true"></mat-paginator>
-                    
-                    <!-- <mat-form-field appearance="outline">
-                        <mat-select [ngModel]="manualPage" (ngModelChange)="updateManualPage($event)">
-                            <mat-option *ngFor="let item of totalItemsList" [value]=item>{{item +1}} -
-                                {{totalItems}}</mat-option>
-                        </mat-select>
-                    </mat-form-field> -->
-                    <select style="float: right;
-                    margin-right: 65px;" [ngModel]="manualPage" (ngModelChange)="updateManualPage($event)">    
-                        <!-- <option>Choose Website</option>   -->
-                        <option *ngFor="let item of totalItemsList" [value]="item">{{item +1}} - {{totalItems}}</option>  
-                    </select>  
-                    
+
+            <!-- <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator> -->
+            <!-- <mat-paginator #paginator  [pageSizeOptions]="[10,20]" pageSize=10  [hidePageSize]="true" ></mat-paginator> -->
+            <pagination-template #p="paginationApi" (pageChange)="page = $event">
+                <div class="row no-gutters">
+                  <div class="col-md-4 no-padding">
+                    <!-- <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg></span> -->
+                    <span style="float: right;"> {{getStartIndex(p.getCurrent(), p.getLastPage())}}-{{getLastIndex(p.getCurrent(), p.getLastPage())}} of <b>{{contacts?.length}}</b></span>
+                  </div>
+                  <div class="col-md-8 no-padding">
+                    <div class="custom-pagination">
+                      <div class="pagination-icon pagination-previous">
+                        <!-- <span *ngIf="!p.isFirstPage()" (click)="p.previous()"> -->
+                            <span (click)="p.previous()">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+                          </svg>
+                        </span>
+                      </div>
+                      <div class="page-number">
+                        <!-- <span>Pg</span> -->
+                        <span>
+                          <select name="pageToggle" id="pageToggle" [(ngModel)]="page">
+                            <ng-container *ngFor="let item of createRange(p.getLastPage())">
+                              <!-- <option (click)="page = item.value" [value]="item.value">{{item.value}} of {{p.getLastPage()}}</option> -->
+                              <option (click)="page = item.value" [value]="item.value">{{item.value}} of {{2}}</option>
+                            </ng-container>
+                          </select>
+                        </span>
+                        <!-- <span>of {{p.getLastPage()}}</span> -->
+                      </div>
+                      <div class="pagination-icon pagination-next">
+                        <!-- <span *ngIf="!p.isLastPage()" (click)="p.next()"> -->
+                            <span (click)="p.next()">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+                          </svg>
+                        </span>
+                      </div>
+                      <!-- <div class="page-number">
+                        <select name="noOfRowsVisible" (change)="page = 1" [(ngModel)]="noOfRows">
+                          <option value="10">10</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                        </select>
+                      </div> -->
+                    </div>
+                  </div>
                 </div>
-            </div>
+                <pre>{{ getStartIndex(p.getCurrent(), p.getLastPage()) of <b>{{contacts?.length}}</b> | json}}</pre>
+              </pagination-template>
         </mat-card-footer>
     </mat-card>
 </div>

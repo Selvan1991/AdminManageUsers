@@ -74,14 +74,16 @@
 }
 
 .headerdivbefore {
-  padding-top: 30px;
+  //padding-top: 30px;
+  padding-top: 0px;
   margin-left: 9px;
   width: 99%;
   margin-bottom: 32px;
 }
 
 .headerdivafter {
-  padding-top: 30px;
+  //padding-top: 30px;
+  padding-top: 0px;
   margin-left: 9px;
   width: 99%;
   margin-bottom: 0px;
@@ -167,3 +169,72 @@
   margin-left: 20px;
   margin-top: 19px;
 }
+.norecordsfound{
+  float: right;
+  margin-right: 853px;
+  margin-top: 19px;
+}
+.selected {
+  display: none
+}
+.currentprojectstd{
+  white-space: nowrap; 
+  width: 50px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+//pagination
+.no-padding {
+  padding: 0px;
+}
+.pagination-row {
+  background-color: #f2f2f2;
+}
+.pagination-icon {
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.pagination-previous, .pagination-next {
+  margin-right: 7px;
+}
+
+.custom-pagination .page-number {
+  display: inline-block;
+}
+
+.page-number span {
+  display: inline-block;
+  margin-right: 7px;
+}
+//end
+//material ddl
+.wrapper{
+  display:flex;
+  align-items: center;
+}
+
+.mat-select{
+  width:5rem!important;
+  text-align: right;
+}
+.mat-option{
+  text-align: right;
+  padding-right: 1.5rem
+}
+
+.mat-input-element
+{
+  width:3rem;
+  padding:.25rem 1rem;
+  text-align: right;
+  border:1px solid silver;
+  border-radius: .25rem;
+  margin:.5rem
+}
+.mat-input-element:focus{
+  border-color: #80bdff;
+}
+//end
